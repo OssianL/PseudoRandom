@@ -850,6 +850,22 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: b5a31875ce5d3374d9556ff9a502163d, type: 2}
+      propertyPath: inventoryWidthDeduction
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: b5a31875ce5d3374d9556ff9a502163d, type: 2}
+      propertyPath: inventoryHeightDeduction
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: b5a31875ce5d3374d9556ff9a502163d, type: 2}
+      propertyPath: padding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: b5a31875ce5d3374d9556ff9a502163d, type: 2}
+      propertyPath: builder
+      value: 
+      objectReference: {fileID: 938262953}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5a31875ce5d3374d9556ff9a502163d, type: 2}
   m_RootGameObject: {fileID: 938262947}
@@ -3980,6 +3996,7 @@ GameObject:
   - 143: {fileID: 938262951}
   - 114: {fileID: 938262952}
   - 114: {fileID: 938262950}
+  - 114: {fileID: 938262953}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4035,8 +4052,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 938262952}
-  inventoryWidthDeduction: 1200
-  inventoryHeightDeduction: 400
+  inventoryWidthDeduction: 100
+  inventoryHeightDeduction: 100
+  padding: 0
   slotStyle:
     m_Name: 
     m_Normal:
@@ -4125,6 +4143,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryColums: 5
   inventoryRows: 5
+--- !u!114 &938262953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 938262947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f2a190169a867458b0cf768031834d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testTower: {fileID: 0}
 --- !u!1 &942747550
 GameObject:
   m_ObjectHideFlags: 0
