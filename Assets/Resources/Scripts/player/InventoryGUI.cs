@@ -105,7 +105,7 @@ public class InventoryGUI : MonoBehaviour {
 	
 	private void itemButtonLogic(ItemInfo clickedItem) {
 		Debug.Log(clickedItem.itemName);
-		this.gameObject.SendMessage("Build", clickedItem.gObject);
+		this.gameObject.SendMessage("Build", clickedItem);
 	}
 	
 }

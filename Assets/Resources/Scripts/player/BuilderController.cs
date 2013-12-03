@@ -5,10 +5,8 @@ public class BuilderController : MonoBehaviour {
 	
 	private bool active;
 	private GameObject building;
-	private Tower tower;
 	private float unit = 1.6f;
-	
-	public GameObject testTower;
+	private ItemInfo placableItmInf;
 	
 	// Use this for initialization
 	void Start () {
@@ -17,32 +15,60 @@ public class BuilderController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(active) BuildProgress();
+		if (active)
+			BuildProgress ();
 	}
 	
-	public void Build(Object newBuilding) {
+	public void Build (ItemInfo itmInf) {
+		this.placableItmInf = itmInf;
 		active = true;
-		building = (GameObject) Instantiate(newBuilding);
+		building = (GameObject)Instantiate (placableItmInf.gObject);
 		building.collider.isTrigger = true;
-		tower = building.GetComponent<Tower>();
-		if(tower != null) tower.enabled = false;
+		itemSpecificOptionsWhenPlacing ();
+
 	}
 	
-	private void BuildProgress() {
+	private void BuildProgress () {
 		Vector3 position = transform.position + (transform.forward * unit);
-		position = Utils.Snap(position, unit);
+		building.SetActive (true);
+		position = Utils.Snap (position, unit);
 		position.x += unit / 2;
 		position.z += unit / 2;
 		position.y = 0;
-		tower.transform.position = position;
-		if(Input.GetButtonDown("Fire1")) PlaceBuilding();
+		building.transform.position = position;
+		if (Input.GetButtonDown ("Fire1"))
+			PlaceBuilding ();
 	}
 	
-	private void PlaceBuilding() {
+	private void PlaceBuilding () {
 		active = false;
 		building.collider.isTrigger = false;
-		if(tower != null) tower.enabled = true;
-		tower = null;
-		SendMessage("BuildComplete");
+
+		itemSpecificOptionsAfterPlacing ();
+		
+		this.placableItmInf = null;
+		SendMessage ("BuildComplete");
 	}
+	
+	private void itemSpecificOptionsWhenPlacing () {
+		if (placableItmInf.itemName == "Tower") {
+			Tower tower = building.GetComponent<Tower> ();
+			if (tower != null)
+				tower.enabled = false;
+		}
+	}
+
+	private void itemSpecificOptionsAfterPlacing () {
+		if (placableItmInf.itemName == "Tower") {
+			Tower tower = building.GetComponent<Tower> ();
+			if (tower != null)
+				tower.enabled = true;
+		} else if (placableItmInf.itemName == "MEAT") {
+			building.collider.isTrigger = true;
+		} else if (placableItmInf.itemName == "DUCTTAPE") {
+			building.collider.isTrigger = true;
+		}
+	
+	}
+	
 }
