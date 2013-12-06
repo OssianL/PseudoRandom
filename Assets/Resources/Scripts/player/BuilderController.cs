@@ -3,18 +3,24 @@ using System.Collections;
 
 public class BuilderController : MonoBehaviour {
 	
-	private bool active;
+	private bool buildingInProgress;
 	private GameObject building;
 	private float unit = 1.6f;
+<<<<<<< HEAD
 	private ItemInfo placableItmInf;
+=======
+	
+	public GameObject testObject;
+>>>>>>> ossian/master
 	
 	// Use this for initialization
 	void Start () {
-		
+		SendMessage("Build", testObject);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+<<<<<<< HEAD
 		if (active)
 			BuildProgress ();
 	}
@@ -23,6 +29,14 @@ public class BuilderController : MonoBehaviour {
 		this.placableItmInf = itmInf;
 		active = true;
 		building = (GameObject)Instantiate (placableItmInf.gObject);
+=======
+		if(buildingInProgress) BuildProgress();
+	}
+	
+	public void Build(Object newBuilding) {
+		buildingInProgress = true;
+		building = (GameObject) Instantiate(newBuilding);
+>>>>>>> ossian/master
 		building.collider.isTrigger = true;
 		itemSpecificOptionsWhenPlacing ();
 
@@ -36,12 +50,20 @@ public class BuilderController : MonoBehaviour {
 		position.z += unit / 2;
 		position.y = 0;
 		building.transform.position = position;
+<<<<<<< HEAD
 		if (Input.GetButtonDown ("Fire1"))
 			PlaceBuilding ();
 	}
 	
 	private void PlaceBuilding () {
 		active = false;
+=======
+		if(Input.GetButtonDown("Fire1")) PlaceBuilding();
+	}
+	
+	private void PlaceBuilding() {
+		buildingInProgress = false;
+>>>>>>> ossian/master
 		building.collider.isTrigger = false;
 
 		itemSpecificOptionsAfterPlacing ();
