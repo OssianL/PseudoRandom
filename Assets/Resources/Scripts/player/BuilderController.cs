@@ -6,40 +6,28 @@ public class BuilderController : MonoBehaviour {
 	private bool buildingInProgress;
 	private GameObject building;
 	private float unit = 1.6f;
-<<<<<<< HEAD
 	private ItemInfo placableItmInf;
-=======
+
+
 	
-	public GameObject testObject;
->>>>>>> ossian/master
-	
-	// Use this for initialization
 	void Start () {
-		SendMessage("Build", testObject);
+
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
-<<<<<<< HEAD
-		if (active)
+		if (buildingInProgress)
 			BuildProgress ();
 	}
 	
 	public void Build (ItemInfo itmInf) {
 		this.placableItmInf = itmInf;
-		active = true;
-		building = (GameObject)Instantiate (placableItmInf.gObject);
-=======
-		if(buildingInProgress) BuildProgress();
-	}
-	
-	public void Build(Object newBuilding) {
 		buildingInProgress = true;
-		building = (GameObject) Instantiate(newBuilding);
->>>>>>> ossian/master
+		building = (GameObject)Instantiate (placableItmInf.gObject);
 		building.collider.isTrigger = true;
 		itemSpecificOptionsWhenPlacing ();
-
+		if (buildingInProgress)
+			BuildProgress ();
 	}
 	
 	private void BuildProgress () {
@@ -48,28 +36,21 @@ public class BuilderController : MonoBehaviour {
 		position = Utils.Snap (position, unit);
 		position.x += unit / 2;
 		position.z += unit / 2;
-		position.y = 0;
+		position.y = -3.782156f;
 		building.transform.position = position;
-<<<<<<< HEAD
+
 		if (Input.GetButtonDown ("Fire1"))
 			PlaceBuilding ();
 	}
 	
 	private void PlaceBuilding () {
-		active = false;
-=======
-		if(Input.GetButtonDown("Fire1")) PlaceBuilding();
-	}
-	
-	private void PlaceBuilding() {
 		buildingInProgress = false;
->>>>>>> ossian/master
 		building.collider.isTrigger = false;
 
 		itemSpecificOptionsAfterPlacing ();
 		
+		SendMessage ("BuildComplete", this.placableItmInf);		
 		this.placableItmInf = null;
-		SendMessage ("BuildComplete");
 	}
 	
 	private void itemSpecificOptionsWhenPlacing () {
@@ -87,7 +68,7 @@ public class BuilderController : MonoBehaviour {
 				tower.enabled = true;
 		} else if (placableItmInf.itemName == "MEAT") {
 			building.collider.isTrigger = true;
-		} else if (placableItmInf.itemName == "DUCTTAPE") {
+		} else if (placableItmInf.itemName == "DUCT TAPE") {
 			building.collider.isTrigger = true;
 		}
 	

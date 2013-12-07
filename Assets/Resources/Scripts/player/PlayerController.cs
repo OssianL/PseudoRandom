@@ -22,10 +22,9 @@ public class PlayerController : MonoBehaviour {
 	private GameObject currentWeapon;
 	private Vector3 movement;
 	private bool buildingInProgress = false;
-<<<<<<< HEAD
+
 	public const float UNIT = 1.6f;
-=======
->>>>>>> ossian/master
+
 	
 	// Use this for initialization
 	void Start () {

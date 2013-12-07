@@ -6,12 +6,9 @@ using System.Collections.Generic;
 public class Inventory : MonoBehaviour {
 	public int inventoryColums;
 	public int inventoryRows;
-	
 	private int inventorySize;
-	
 	private List<ItemInfo> items;
 	private Slot nextEmpty;
-
 	
 	void Start () {
 		inventorySize = inventoryColums * inventoryRows;
@@ -67,8 +64,8 @@ public class Inventory : MonoBehaviour {
 			} else {
 				increaseItemCountInInventory (itmInf);	
 			}
-			other.gameObject.SetActive(false);
-		//	Destroy (other.gameObject);
+			other.gameObject.SetActive (false);
+			//	Destroy (other.gameObject);
 		}
 	}
 	
@@ -90,5 +87,26 @@ public class Inventory : MonoBehaviour {
 		Debug.Log (inventoryItem.getAmount ());
 		return true;
 	}
+		
+	public bool decreaseItemCountInInventoryByOne (ItemInfo itmInf) {
+		ItemInfo inventoryItem = items.Find (x => x.itemName == itmInf.itemName);
+		Debug.Log (inventoryItem.getAmount ());
+		bool errorInDecrease = inventoryItem.decreaseAmountBy (1);
+		if(inventoryItem.getAmount() < 1) {
+			removeItemFromInventoryList(inventoryItem);
+		}
+		
+		Debug.Log (inventoryItem.getAmount ());
+		return errorInDecrease;
+	}
 	
+	private void removeItemFromInventoryList(ItemInfo inventoryItem) {
+		if (!items.Contains(inventoryItem)) {
+			Debug.LogError("Trying to remove item thats not in the item list: " + inventoryItem.itemName);
+			return;
+		}
+		items.Remove(inventoryItem);
+		items.Add(null);
+		updateNextEmptySlot();
+	}
 }
