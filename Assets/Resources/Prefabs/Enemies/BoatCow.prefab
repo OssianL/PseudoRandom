@@ -122,6 +122,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400010}
+  - 114: {fileID: 11400012}
   m_Layer: 0
   m_Name: BoatCow
   m_TagString: Enemy
@@ -311,9 +312,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 300
-  attackRate: .100000001
+  attackRate: 1
   attackDistance: 2
-  damage: 10
+  damage: 5
   gravity: 3
   idle: {fileID: 0}
   walk: {fileID: 0}
@@ -343,6 +344,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 2, z: 0}
+--- !u!114 &11400012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4dfa80ef6ea1d48857c277d77a9d1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHit: {fileID: 0}
+  onAttack: {fileID: 0}
+  repeatingClip: {fileID: 8300000, guid: 3cf2089fc53c29148b83709051306784, type: 3}
+  repeatRate: 6
+  loop: 1
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

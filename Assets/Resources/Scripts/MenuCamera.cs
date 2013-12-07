@@ -19,7 +19,7 @@ public class MenuCamera : MonoBehaviour {
 		amount = increase ? amount : -amount;
 		transform.position += transform.forward * amount;
 		
-		if(transform.localPosition.z < zMin || transform.localPosition.z > zMax) {
+		if((transform.localPosition.z < zMin && increase) || (transform.localPosition.z > zMax && !increase)) {
 			increase = !increase;
 		}
 	}

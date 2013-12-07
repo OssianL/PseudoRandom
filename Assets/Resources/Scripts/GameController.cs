@@ -13,7 +13,10 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		//game over if all treasures are destroyed
+		if(TreasureCount() <= 0) {
+			GameOver();
+		}
 	}
 	
 	public void OnWaveStart() {
@@ -22,6 +25,10 @@ public class GameController : MonoBehaviour {
 	
 	public void OnWaveEnd() {
 		buildTime = true;
+	}
+	
+	public void GameOver() {
+		Application.LoadLevel(2);
 	}
 	
 	public void OnGUI() {
@@ -33,5 +40,9 @@ public class GameController : MonoBehaviour {
 		else {
 			GUI.Label(new Rect(10f, 10f, 200f, 30f), "wave complete: " + waveController.EnemiesKilled() + "/" + waveController.EnemiesInWave());
 		}
+	}
+	
+	private int TreasureCount() {
+		return GameObject.FindGameObjectsWithTag("Treasure").Length;
 	}
 }

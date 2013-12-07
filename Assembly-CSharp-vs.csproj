@@ -118,6 +118,7 @@
      <Compile Include="Assets\Resources\Scripts\GUI\DraggableGUIElement.cs" />
      <Compile Include="Assets\Resources\Scripts\GUI\ForwardAllMouseEvents.cs" />
      <Compile Include="Assets\Resources\Scripts\GameController.cs" />
+     <Compile Include="Assets\Resources\Scripts\GameOverMenu.cs" />
      <Compile Include="Assets\Resources\Scripts\Health.cs" />
      <Compile Include="Assets\Resources\Scripts\HealthBar.cs" />
      <Compile Include="Assets\Resources\Scripts\Items\ItemInfoScript.cs" />

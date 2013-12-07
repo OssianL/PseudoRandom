@@ -21,7 +21,7 @@ public class Health : MonoBehaviour {
 	
 	public void TakeDamage(int damage) {
 		health -= damage;
-		if(health < 0 && !dead) OnDeath();
+		if(health <= 0 && !dead) OnDeath();
 	}
 	
 	private void OnDeath() {
@@ -30,7 +30,7 @@ public class Health : MonoBehaviour {
 		if(deathSound != null) {
 			AudioSource.PlayClipAtPoint(deathSound, transform.position);
 		}
-		gameObject.SendMessage("OnDeath");
+		SendMessage("OnDeath");
 		Destroy(transform.gameObject);
 	}
 	
