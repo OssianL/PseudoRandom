@@ -59,11 +59,8 @@ public class Inventory : MonoBehaviour {
 		if (other.gameObject.tag == "Collectible") {
 			ItemInfo itmInf = getColliderObjectItemInfo (other);
 			
-			if (!items.Contains (itmInf)) {
-				addItemToNewInventorySlot (itmInf);
-			} else {
-				increaseItemCountInInventory (itmInf);	
-			}
+			addItem (itmInf);
+			
 			other.gameObject.SetActive (false);
 			//	Destroy (other.gameObject);
 		}
@@ -80,19 +77,19 @@ public class Inventory : MonoBehaviour {
 		return true;
 	}
 	
-	private bool increaseItemCountInInventory (ItemInfo itmInf) {
+	private bool increaseItemCountInInventory (ItemInfo itmInf, int inc) {
 		ItemInfo inventoryItem = items.Find (x => x.itemName == itmInf.itemName);
 		Debug.Log ("before increase in inventory " + inventoryItem.getAmount ());
-		inventoryItem.increaseAmountBy (itmInf.getAmount ());
+		inventoryItem.increaseAmountBy (inc);
 		Debug.Log ("after increase in inventory " + inventoryItem.getAmount ());
 		return true;
 	}
 		
-	public bool decreaseItemCountInInventoryByOne (ItemInfo itmInf) {
+	public bool decreaseItemCountInInventory (ItemInfo itmInf, int dec) {
 		ItemInfo inventoryItem = items.Find (x => x.itemName == itmInf.itemName);
 		Debug.Log ("before decrease in inventory " + inventoryItem.getAmount ());
 		bool itemsLeft = true;
-		inventoryItem.decreaseAmountBy (1);
+		inventoryItem.decreaseAmountBy (dec);
 		if (inventoryItem.getAmount () < 1) {
 			removeItemFromInventoryList (inventoryItem);
 			itemsLeft = false;
@@ -113,8 +110,19 @@ public class Inventory : MonoBehaviour {
 	}
 	
 	public void PlacementComplete (ItemInfo itmInf) {
-		this.decreaseItemCountInInventoryByOne (itmInf);
+		this.decreaseItemCountInInventory (itmInf, 1);
 		
 	}
+	
+	public bool addItem (ItemInfo itmInf) {
+		if (!items.Contains (itmInf)) {
+			return addItemToNewInventorySlot (itmInf);
+		} else {
+			return increaseItemCountInInventory (itmInf, itmInf.getAmount ());	
+		}
+		
+	}
+	
+	
 	
 }

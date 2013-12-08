@@ -70,7 +70,7 @@ public class BuilderController : MonoBehaviour {
 	}
 
 	private void itemSpecificOptionsAfterPlacing () {
-		if (placableItmInf.itemName == "Tower") {
+		if (placableItmInf.itemName == "TOWER") {
 			Tower tower = building.GetComponent<Tower> ();
 			if (tower != null)
 				tower.enabled = true;

@@ -64,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.3811417, y: -.0481619984, z: 11.6324635}
+  m_LocalPosition: {x: -1.37160623, y: -.0431873985, z: 1.52603352}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -155,7 +155,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 2b3139d7ad117acfd000d09a8d76c639, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -298,10 +298,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d216fab35c90d429bf5f4a46b471c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: TESLA COIL
+  itemName: TOWER
   icon: {fileID: 2800000, guid: 49bf80f99c4ca1a43b9a53e84cea335c, type: 3}
-  description: 
-  amount: 5
+  description: lol
+  amount: 1
   gObject: {fileID: 100000}
   isWeapon: 0
 --- !u!1001 &100100000

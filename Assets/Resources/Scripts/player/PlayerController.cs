@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		controller = GetComponent<CharacterController> ();
 		weaponHand = transform.Find ("player/Armature/root/stomach/upper_arm_R/lower_arm_R/hand_R/WeaponHand");
-		//SwitchWeapon((GameObject) Resources.Load("Prefabs/Weapons/Shotgun"));
+		// SwitchWeapon((GameObject) Resources.Load("Prefabs/Weapons/Shotgun"));
 		movement = new Vector3 ();
 		
 		InitAnimations ();

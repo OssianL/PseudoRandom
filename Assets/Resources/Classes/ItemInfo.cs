@@ -28,8 +28,7 @@ public class ItemInfo {
 	
 	// Add other info here, weight etc
 
-	public ItemInfo (string itemName, Texture2D icon, string description, int amount, GameObject gObject, bool isWeapon)
-	{
+	public ItemInfo (string itemName, Texture2D icon, string description, int amount, GameObject gObject, bool isWeapon) {
 		this.itemName = itemName;
 		this.icon = icon;
 		this.description = description;
