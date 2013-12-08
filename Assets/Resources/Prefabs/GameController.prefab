@@ -41,8 +41,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - {x: 0, y: 1, z: 13}
-  - {x: 25, y: 1, z: -11}
+  - {x: -2, y: 1, z: -10}
+  - {x: 190, y: 1, z: -10}
+  - {x: 190, y: 1, z: 180}
+  - {x: -2, y: 1, z: 180}
   spawnRate: 4
   timeToBuild: 5
   startingDifficulty: 1
