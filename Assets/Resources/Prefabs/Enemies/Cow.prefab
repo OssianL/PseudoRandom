@@ -156,9 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
-  attackRate: .100000001
+  attackRate: 1
   attackDistance: 2
-  damage: 10
+  damage: 3
   gravity: 3
   idle: {fileID: 0}
   walk: {fileID: 0}
