@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour {
 	public string targetTag = "Treasure";
 	public float attackPlayerTriggerDistance = 5.0f;
 	public float attackPlayerUntriggerDistance = 15.0f;
-	public float attackDistance = 0.5f;
+	//public float attackDistance = 1f;
 	
 	private EnemyController controller;
 	private Seeker seeker;
@@ -35,16 +35,16 @@ public class EnemyAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-	
-	public void FixedUpdate() {
 		if((Time.time - lastPathCalculationTime) > pathCalculationRate) UpdatePath();
 		if(path != null && currentWaypoint < path.vectorPath.Count) {
 			FollowTarget();
 			if(DistanceToNextNode() < waypointSkipDistance) currentWaypoint++;
 		}
 		Attack();
+	}
+	
+	public void FixedUpdate() {
+
 	}
 	
 	public void  OnPathComplete(Path path) {
@@ -59,7 +59,11 @@ public class EnemyAI : MonoBehaviour {
 	}
 	
 	private void FollowTarget() {
-		Vector3 direction = path.vectorPath[currentWaypoint] - transform.position;
+		Vector3 direction;
+		if(path != null) direction = path.vectorPath[currentWaypoint] - transform.position;
+		else {
+			direction = currentTarget.transform.position - transform.position;
+		}
 		direction.y = 0;
 		controller.Move(direction);
 	}
@@ -67,7 +71,7 @@ public class EnemyAI : MonoBehaviour {
 	private void Attack() {
 		if(currentTarget == null) return;
 		float targetDistance = Vector3.Distance(transform.position, currentTarget.transform.position);
-		if(targetDistance < attackDistance) controller.Attack(currentTarget);
+		if(targetDistance < controller.attackDistance) controller.Attack(currentTarget);
 	}
 	
 	private void UpdatePath() {

@@ -14,7 +14,11 @@ public class BuilderController : MonoBehaviour {
 
 	
 	void Start () {
+<<<<<<< HEAD
 		this.groundHeight = roadPartOnGroundLevel.transform.position.y;
+=======
+		//SendMessage("Build", testObject);
+>>>>>>> ossian/master
 	}
 	
 

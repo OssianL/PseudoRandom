@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour {
 		WeaponControl ();
 	}
 	
+	public void OnDeath() {
+		Camera.main.transform.parent = null;
+		GameObject.FindWithTag("GameController").SendMessage("GameOver");
+	}
+
 	private void InitAnimations () {
 		animation = GetComponentInChildren<Animation> ();
 		animation.AddClip (walk, "Walk");
@@ -68,7 +73,7 @@ public class PlayerController : MonoBehaviour {
 		controller.Move (movement);
 	}
 
-	private void Jump () {
+	private void Jump() {
 		if (controller.isGrounded) {
 			movement.y = jumpSpeed;
 		}
