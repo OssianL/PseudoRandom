@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿/*
+using UnityEditor;
 using UnityEngine;
 using System.Collections;
 
@@ -18,3 +19,4 @@ public class GeneratorEditor : Editor {
 		}
 	}
 }
+*/
