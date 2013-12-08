@@ -10,6 +10,11 @@ public class InventoryGUI : MonoBehaviour {
 	public int inventoryWidthDeduction;
 	public int inventoryHeightDeduction;
 	public int padding;
+	public int titleH = 20;
+	
+	public int locHor;
+	public int locVer;
+	
 	private int invW;
 	private int invH;
 	private int rows;
@@ -39,8 +44,10 @@ public class InventoryGUI : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.Tab)) {
 			if (inventoryOn) {
 				inventoryOn = false;
+				GameObject.FindWithTag("Player").GetComponent<PlayerController>().SetMouseControll(true);
 			} else if (!inventoryOn) {
 				inventoryOn = true;
+				GameObject.FindWithTag("Player").GetComponent<PlayerController>().SetMouseControll(false);
 			}
 		}
 	}
@@ -48,12 +55,22 @@ public class InventoryGUI : MonoBehaviour {
 	private void createInventoryGUI () {
 		slotStyle = new GUIStyle (GUI.skin.button);
 		if (inventoryOn) {
-			GUI.BeginGroup (new Rect (80, 50, invW, invH));
+			GUI.BeginGroup (new Rect (locHor, locVer, invW, invH));
 
 			// Main inventory frame
 			GUI.Box (new Rect (0, 0, invW, invH), "");
-			drawInventorySlots ();
+			
 
+			invH -= (int) titleH;
+			
+			GUI.Box (new Rect(0, 0, invW, titleH), "Inventory");
+			
+
+			
+			drawInventorySlots ();
+			
+
+			invH += (int) titleH;
 			GUI.EndGroup ();
 		}
 	}
@@ -78,11 +95,18 @@ public class InventoryGUI : MonoBehaviour {
 	
 	private void drawSlotWithItem (int row, int col, int slotW, int slotH) {
 		ItemInfo itmInf = inventory.getItems () [slotInd (row, col)];
-		GUIContent itemContent = new GUIContent (itmInf.itemName + "\n x " + itmInf.getAmount (), itmInf.description);
+		GUIContent itemContent = new GUIContent ("x " + itmInf.getAmount (), itmInf.description);
+		
+		GUI.BeginGroup(createSlotRect (row, col, slotW, slotH));
+		float textRatio = 0.3f;
+		float textH = slotH*textRatio;
+		GUI.Box(new Rect(0,0,slotW,textH), itemContent);
+		
 		setStyle (itmInf);	// Edit inventory slot text colors etc.
-		if (GUI.Button (createSlotRect (row, col, slotW, slotH), itemContent, slotStyle)) {
+		if (GUI.Button (new Rect(0, textH, slotW, slotH*(1-textRatio)), "",slotStyle)) {
 			itemButtonLogic(itmInf);
-		}				
+		}
+		GUI.EndGroup();
 	}
 	
 	private void setStyle (ItemInfo itemI) {
@@ -108,7 +132,5 @@ public class InventoryGUI : MonoBehaviour {
 		this.gameObject.SendMessage("Build", clickedItem);
 	}
 	
-	public void BuildComplete(ItemInfo itmInf) {
-		this.inventory.decreaseItemCountInInventoryByOne(itmInf);
-	}
+
 }

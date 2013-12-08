@@ -7,11 +7,16 @@ public class BuilderController : MonoBehaviour {
 	private GameObject building;
 	private float unit = 1.6f;
 	private ItemInfo placableItmInf;
+	private float groundHeight;
+	
+	public GameObject roadPartOnGroundLevel;
 
 
 	
 	void Start () {
-		//SendMessage("Build", testObject);
+
+		this.groundHeight = roadPartOnGroundLevel.transform.position.y;
+
 	}
 	
 
@@ -21,9 +26,14 @@ public class BuilderController : MonoBehaviour {
 	}
 	
 	public void Build (ItemInfo itmInf) {
-		this.placableItmInf = itmInf;
 		buildingInProgress = true;
+		
+		this.placableItmInf = itmInf;
+
 		building = (GameObject)Instantiate (placableItmInf.gObject);
+		ItemInfoScript s = (ItemInfoScript)building.GetComponent(typeof(ItemInfoScript));
+		s.amount = 1;	
+
 		building.collider.isTrigger = true;
 		itemSpecificOptionsWhenPlacing ();
 		if (buildingInProgress)
@@ -36,7 +46,12 @@ public class BuilderController : MonoBehaviour {
 		position = Utils.Snap (position, unit);
 		position.x += unit / 2;
 		position.z += unit / 2;
-		position.y = -3.782156f;
+		if(placableItmInf.gObject.CompareTag("Collectible")){
+			position.y = groundHeight + 0.5f;
+		} else {
+			position.y = groundHeight;
+		}
+
 		building.transform.position = position;
 
 		if (Input.GetButtonDown ("Fire1"))
@@ -49,7 +64,7 @@ public class BuilderController : MonoBehaviour {
 
 		itemSpecificOptionsAfterPlacing ();
 		
-		SendMessage ("BuildComplete", this.placableItmInf);		
+		SendMessage ("PlacementComplete", this.placableItmInf);
 		this.placableItmInf = null;
 	}
 	
@@ -62,13 +77,11 @@ public class BuilderController : MonoBehaviour {
 	}
 
 	private void itemSpecificOptionsAfterPlacing () {
-		if (placableItmInf.itemName == "Tower") {
+		if (placableItmInf.itemName == "TOWER") {
 			Tower tower = building.GetComponent<Tower> ();
 			if (tower != null)
 				tower.enabled = true;
-		} else if (placableItmInf.itemName == "MEAT") {
-			building.collider.isTrigger = true;
-		} else if (placableItmInf.itemName == "DUCT TAPE") {
+		} else if (placableItmInf.gObject.CompareTag("Collectible")) {
 			building.collider.isTrigger = true;
 		}
 	

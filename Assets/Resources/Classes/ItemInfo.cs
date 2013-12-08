@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 // Generic class on which to build different game items
@@ -28,8 +28,7 @@ public class ItemInfo {
 	
 	// Add other info here, weight etc
 
-	public ItemInfo (string itemName, Texture2D icon, string description, int amount, GameObject gObject, bool isWeapon)
-	{
+	public ItemInfo (string itemName, Texture2D icon, string description, int amount, GameObject gObject, bool isWeapon) {
 		this.itemName = itemName;
 		this.icon = icon;
 		this.description = description;
@@ -38,22 +37,28 @@ public class ItemInfo {
 		this.isWeapon = isWeapon;
 	}
 
-	public void increaseAmountBy (int amount) {
-		Debug.Log (amount);
-		this.amount = this.amount + amount;
+	public bool increaseAmountBy (int inc) {
+		Debug.Log ("amount to increase in item " + inc);
+		this.amount += inc;
+		return true;
 	}
 	
-	public bool decreaseAmountBy (int amount) {
-		Debug.Log (amount);
-		if (this.amount < amount) {
+	public bool decreaseAmountBy (int dec) {
+		Debug.Log ("amount to decrease in item " + dec);
+		if (this.amount < dec) {
 			return false;
 		} 
-		this.amount = this.amount - amount;
+		this.amount -= dec;
 		return true;
 	}
 		
 	public int getAmount () {
 		return this.amount;
+	}
+	
+	public bool setAmount (int amount) {
+		this.amount = amount;
+		return true;
 	}
 	
 	public override bool Equals (object obj) {

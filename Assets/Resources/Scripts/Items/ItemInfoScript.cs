@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-
 // ALL ITEMS HAVE TO HAVE THIS SCRIPT IN ORDER FOR THEM TO BE IN THE INVENTORY (aka wannabe interface)
 public class ItemInfoScript : MonoBehaviour {
 	private ItemInfo info;
@@ -17,7 +15,13 @@ public class ItemInfoScript : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		info = new ItemInfo(itemName, icon, description, amount, gObject, isWeapon);
+		info = new ItemInfo (itemName, icon, description, amount, gObject, isWeapon);
+		Debug.Log (info.ToString () + itemName);
+	}
+	
+	void Awake () {
+		info = new ItemInfo (itemName, icon, description, amount, gObject, isWeapon);
+		Debug.Log (info.ToString () + itemName);
 	}
 	
 	// Update is called once per frame
@@ -25,8 +29,7 @@ public class ItemInfoScript : MonoBehaviour {
 		
 	}
 	
-	
-	public ItemInfo getItemInfo() {
+	public ItemInfo getItemInfo () {
 		return info;
 	}
 	

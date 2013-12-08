@@ -59,11 +59,8 @@ public class Inventory : MonoBehaviour {
 		if (other.gameObject.tag == "Collectible") {
 			ItemInfo itmInf = getColliderObjectItemInfo (other);
 			
-			if (!items.Contains (itmInf)) {
-				addItemToNewInventorySlot (itmInf);
-			} else {
-				increaseItemCountInInventory (itmInf);	
-			}
+			addItem (itmInf);
+			
 			other.gameObject.SetActive (false);
 			//	Destroy (other.gameObject);
 		}
@@ -80,33 +77,52 @@ public class Inventory : MonoBehaviour {
 		return true;
 	}
 	
-	private bool increaseItemCountInInventory (ItemInfo itmInf) {
+	private bool increaseItemCountInInventory (ItemInfo itmInf, int inc) {
 		ItemInfo inventoryItem = items.Find (x => x.itemName == itmInf.itemName);
-		Debug.Log (inventoryItem.getAmount ());
-		inventoryItem.increaseAmountBy (itmInf.getAmount ());
-		Debug.Log (inventoryItem.getAmount ());
+		Debug.Log ("before increase in inventory " + inventoryItem.getAmount ());
+		inventoryItem.increaseAmountBy (inc);
+		Debug.Log ("after increase in inventory " + inventoryItem.getAmount ());
 		return true;
 	}
 		
-	public bool decreaseItemCountInInventoryByOne (ItemInfo itmInf) {
+	public bool decreaseItemCountInInventory (ItemInfo itmInf, int dec) {
 		ItemInfo inventoryItem = items.Find (x => x.itemName == itmInf.itemName);
-		Debug.Log (inventoryItem.getAmount ());
-		bool errorInDecrease = inventoryItem.decreaseAmountBy (1);
-		if(inventoryItem.getAmount() < 1) {
-			removeItemFromInventoryList(inventoryItem);
+		Debug.Log ("before decrease in inventory " + inventoryItem.getAmount ());
+		bool itemsLeft = true;
+		inventoryItem.decreaseAmountBy (dec);
+		if (inventoryItem.getAmount () < 1) {
+			removeItemFromInventoryList (inventoryItem);
+			itemsLeft = false;
 		}
 		
-		Debug.Log (inventoryItem.getAmount ());
-		return errorInDecrease;
+		Debug.Log ("after decrease in inventory " + inventoryItem.getAmount ());
+		return itemsLeft;
 	}
 	
-	private void removeItemFromInventoryList(ItemInfo inventoryItem) {
-		if (!items.Contains(inventoryItem)) {
-			Debug.LogError("Trying to remove item thats not in the item list: " + inventoryItem.itemName);
+	private void removeItemFromInventoryList (ItemInfo inventoryItem) {
+		if (!items.Contains (inventoryItem)) {
+			Debug.LogError ("Trying to remove item thats not in the item list: " + inventoryItem.itemName);
 			return;
 		}
-		items.Remove(inventoryItem);
-		items.Add(null);
-		updateNextEmptySlot();
+		items.Remove (inventoryItem);
+		items.Add (null);
+		updateNextEmptySlot ();
 	}
+	
+	public void PlacementComplete (ItemInfo itmInf) {
+		this.decreaseItemCountInInventory (itmInf, 1);
+		
+	}
+	
+	public bool addItem (ItemInfo itmInf) {
+		if (!items.Contains (itmInf)) {
+			return addItemToNewInventorySlot (itmInf);
+		} else {
+			return increaseItemCountInInventory (itmInf, itmInf.getAmount ());	
+		}
+		
+	}
+	
+	
+	
 }

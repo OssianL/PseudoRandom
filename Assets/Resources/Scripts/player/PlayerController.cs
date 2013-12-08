@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 	private GameObject currentWeapon;
 	private Vector3 movement;
 	private bool buildingInProgress = false;
+	private bool mouseControll = true;
 
 	public const float UNIT = 1.6f;
 
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		controller = GetComponent<CharacterController> ();
 		weaponHand = transform.Find ("player/Armature/root/stomach/upper_arm_R/lower_arm_R/hand_R/WeaponHand");
-		//SwitchWeapon((GameObject) Resources.Load("Prefabs/Weapons/Shotgun"));
+		SwitchWeapon((GameObject) Resources.Load("Prefabs/Weapons/Shotgun"));
 		movement = new Vector3 ();
 		
 		InitAnimations ();
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	private void PlayerMovement () {
-		transform.Rotate (Vector3.up, Input.GetAxis ("Mouse X") * Time.deltaTime * rotationSpeed);
+		if(mouseControll) transform.Rotate (Vector3.up, Input.GetAxis ("Mouse X") * Time.deltaTime * rotationSpeed);
 		movement = new Vector3 (0, movement.y, 0);
 		movement += transform.forward * Input.GetAxis ("Vertical") * Time.deltaTime * walkingSpeed;
 		movement += transform.right * Input.GetAxis ("Horizontal") * Time.deltaTime * walkingSpeed;
@@ -106,11 +107,15 @@ public class PlayerController : MonoBehaviour {
 		currentWeapon.tag = "Equipped";
 		currentWeapon.transform.parent = weaponHand;
 		currentWeapon.transform.localPosition = Vector3.zero;
-		weaponHand.transform.localPosition = Vector3.zero;
+		//weaponHand.transform.localPosition = Vector3.zero;
 	}
 	
 	public Inventory getInventory () {
 		return inventory;
+	}
+	
+	public void SetMouseControll(bool mouseControll) {
+		this.mouseControll = mouseControll;
 	}
 
 }

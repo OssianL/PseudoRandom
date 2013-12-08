@@ -2,17 +2,15 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Scripts\player\PlayerController.cs">
     <Files>
-      <File FileName="Assets\Resources\Scripts\player\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\SimpleAnimation.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\Enemies\EnemyAI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\Health.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\WaveController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\Enemies\EnemyController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\player\BuilderController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\SoundController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\Menus\InGameMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\Menus\MainMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Scripts\player\BuilderController.cs" Line="50" Column="35" />
+      <File FileName="Assets\Resources\Classes\RustyFenceBlueprint.cs" Line="11" Column="3" />
+      <File FileName="Assets\Resources\Classes\TeslaCoilBlueprint.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Classes\TestBlueprint.cs" Line="1" Column="525" />
+      <File FileName="Assets\Resources\Scripts\player\PlayerController.cs" Line="68" Column="45" />
+      <File FileName="Assets\Resources\Scripts\Weapons\ShotgunScript.cs" Line="11" Column="16" />
+      <File FileName="Assets\Resources\Scripts\Weapons\WeaponScript.cs" Line="27" Column="9" />
+      <File FileName="Assets\Resources\Scripts\player\InventoryGUI.cs" Line="63" Column="4" />
+      <File FileName="Assets\Resources\Scripts\player\CraftingGUI.cs" Line="45" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,12 +18,12 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Resources" expanded="True">
+                <Node name="Classes" expanded="True" />
                 <Node name="Scripts" expanded="True">
-                  <Node name="Enemies" expanded="True" />
-                  <Node name="Menus" expanded="True" />
                   <Node name="player" expanded="True">
                     <Node name="PlayerController.cs" selected="True" />
                   </Node>
+                  <Node name="Weapons" expanded="True" />
                 </Node>
               </Node>
             </Node>

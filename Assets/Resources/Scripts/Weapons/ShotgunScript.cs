@@ -9,7 +9,6 @@ public class ShotgunScript : WeaponScript
 	protected override void Fire ()
 	{
 		base.Fire ();
-		Debug.Log("fire");
 		
 		for(int i = 0; i < shots; i++) {
 			Vector3 direction = transform.forward;
