@@ -108,7 +108,5 @@ public class InventoryGUI : MonoBehaviour {
 		this.gameObject.SendMessage("Build", clickedItem);
 	}
 	
-	public void BuildComplete(ItemInfo itmInf) {
-		this.inventory.decreaseItemCountInInventoryByOne(itmInf);
-	}
+
 }

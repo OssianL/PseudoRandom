@@ -7,11 +7,14 @@ public class BuilderController : MonoBehaviour {
 	private GameObject building;
 	private float unit = 1.6f;
 	private ItemInfo placableItmInf;
+	private float groundHeight;
+	
+	public GameObject roadPartOnGroundLevel;
 
 
 	
 	void Start () {
-
+		this.groundHeight = roadPartOnGroundLevel.transform.position.y;
 	}
 	
 
@@ -21,9 +24,14 @@ public class BuilderController : MonoBehaviour {
 	}
 	
 	public void Build (ItemInfo itmInf) {
-		this.placableItmInf = itmInf;
 		buildingInProgress = true;
+		
+		this.placableItmInf = itmInf;
+
 		building = (GameObject)Instantiate (placableItmInf.gObject);
+		ItemInfoScript s = (ItemInfoScript)building.GetComponent(typeof(ItemInfoScript));
+		s.amount = 1;	
+
 		building.collider.isTrigger = true;
 		itemSpecificOptionsWhenPlacing ();
 		if (buildingInProgress)
@@ -36,7 +44,7 @@ public class BuilderController : MonoBehaviour {
 		position = Utils.Snap (position, unit);
 		position.x += unit / 2;
 		position.z += unit / 2;
-		position.y = -3.782156f;
+		position.y = groundHeight;
 		building.transform.position = position;
 
 		if (Input.GetButtonDown ("Fire1"))
@@ -49,7 +57,7 @@ public class BuilderController : MonoBehaviour {
 
 		itemSpecificOptionsAfterPlacing ();
 		
-		SendMessage ("BuildComplete", this.placableItmInf);		
+		SendMessage ("PlacementComplete", this.placableItmInf);
 		this.placableItmInf = null;
 	}
 	
