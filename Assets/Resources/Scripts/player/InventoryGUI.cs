@@ -10,6 +10,7 @@ public class InventoryGUI : MonoBehaviour {
 	public int inventoryWidthDeduction;
 	public int inventoryHeightDeduction;
 	public int padding;
+	public int titleH = 20;
 	
 	public int locHor;
 	public int locVer;
@@ -56,8 +57,18 @@ public class InventoryGUI : MonoBehaviour {
 
 			// Main inventory frame
 			GUI.Box (new Rect (0, 0, invW, invH), "");
-			drawInventorySlots ();
+			
 
+			invH -= (int) titleH;
+			
+			GUI.Box (new Rect(0, 0, invW, titleH), "Inventory");
+			
+
+			
+			drawInventorySlots ();
+			
+
+			invH += (int) titleH;
 			GUI.EndGroup ();
 		}
 	}

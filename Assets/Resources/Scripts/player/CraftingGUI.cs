@@ -19,7 +19,7 @@ public class CraftingGUI : MonoBehaviour
 	
 	}
 	
-		void Awake ()
+	void Awake ()
 	{
 		blueprints = crafting.getBlueprints ();
 	
@@ -76,7 +76,7 @@ public class CraftingGUI : MonoBehaviour
 	private void drawCraftingMenu ()
 	{
 		float menuTextH = 50f;
-		GUI.Box(new Rect(0, 0, crftW, menuTextH), "Crafting");
+		GUI.Box (new Rect (0, 0, crftW, menuTextH), "Crafting");
 		
 		float buttonH = (crftH - menuTextH) / 2;
 		
@@ -96,7 +96,14 @@ public class CraftingGUI : MonoBehaviour
 	public string formCraftableMaterialString (string name, Dictionary<string,int> mats)
 	{
 		StringBuilder sb = new StringBuilder ();
-		sb.Append (name + "");
+		sb.Append (name + "\n" +
+			"-------------\n");
+		
+		foreach(string mat in mats.Keys){
+			int amount;
+			mats.TryGetValue(mat, out amount);
+			sb.Append(mat + " x " + amount + "\n");
+		}
 		
 		
 		return sb.ToString ();

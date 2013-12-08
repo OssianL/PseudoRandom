@@ -303,7 +303,6 @@ GameObject:
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400008}
-  - 114: {fileID: 11400012}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -580,7 +579,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .63403523, y: -.0481623299, z: .64213407}
+  m_LocalPosition: {x: 91.3451233, y: -3.7838912, z: 85.1412201}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400040}
@@ -719,6 +718,7 @@ MonoBehaviour:
   inventoryWidthDeduction: 1000
   inventoryHeightDeduction: 400
   padding: 10
+  titleH: 20
   locHor: 80
   locVer: 40
   slotStyle:
@@ -791,8 +791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176e3cd3e7be5e64985c0e760897b2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryColums: 5
-  inventoryRows: 5
+  inventoryColums: 4
+  inventoryRows: 4
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -818,22 +818,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crafting: {fileID: 11400010}
   crftW: 300
-  crftH: 200
+  crftH: 400
   locHor: 1200
   locVer: 40
 --- !u!114 &11400010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4559d589ab032bd44942461d6e095a85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 11400004}
---- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
