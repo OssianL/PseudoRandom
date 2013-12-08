@@ -1,18 +1,28 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Scripts\player\CraftingGUI.cs">
+    <Files>
+      <File FileName="Assets\Resources\Scripts\player\CraftingGUI.cs" Line="77" Column="54" />
+      <File FileName="Assets\Resources\Scripts\player\BuilderController.cs" Line="18" Column="1" />
+      <File FileName="Assets\Resources\Scripts\player\InventoryGUI.cs" Line="14" Column="2" />
+      <File FileName="Assets\Resources\Scripts\player\Crafting.cs" Line="28" Column="3" />
+      <File FileName="Assets\Resources\Classes\RustyFenceBlueprint.cs" Line="11" Column="24" />
+      <File FileName="Assets\Resources\Classes\TeslaCoilBlueprint.cs" Line="6" Column="56" />
+      <File FileName="Assets\Resources\Classes\IBlueprint.cs" Line="10" Column="19" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Resources" expanded="True">
+                <Node name="Classes" expanded="True" />
                 <Node name="Scripts" expanded="True">
                   <Node name="Enemies" expanded="True" />
-                  <Node name="Menus" expanded="True">
-                    <Node name="MainMenu.cs" selected="True" />
+                  <Node name="Menus" expanded="True" />
+                  <Node name="player" expanded="True">
+                    <Node name="CraftingGUI.cs" selected="True" />
                   </Node>
-                  <Node name="player" expanded="True" />
                 </Node>
               </Node>
             </Node>

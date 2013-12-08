@@ -2,22 +2,38 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Crafting : MonoBehaviour {
-	public List<IBlueprint> blueprints;
+public class Crafting : MonoBehaviour
+{
+	private List<IBlueprint> blueprints;
 	public Inventory inventory;
 	private bool waitingForInstantiate = false;
-	private GameObject waitingObject;
 	
-	
-	void Start () {
-		
-	}
-	
-	void Update () {
+	void Start ()
+	{
+				createBlueprintList ();
 
 	}
+
+	void Awake ()
+	{
+		createBlueprintList ();
+	}
 	
-	public bool Craft (IBlueprint bp) {
+	void Update ()
+	{
+
+	}
+
+	private void createBlueprintList ()
+	{
+		blueprints = new List<IBlueprint> ();
+		blueprints.Add (new TeslaCoilBlueprint ());
+		blueprints.Add (new RustyFenceBlueprint ());
+		
+	}
+
+	public bool Craft (IBlueprint bp)
+	{
 		Dictionary<string, int> mats = bp.getMaterials ();
 		List<ItemInfo> items = inventory.getItems ();
 		foreach (string mat in mats.Keys) {
@@ -40,30 +56,41 @@ public class Crafting : MonoBehaviour {
 
 	}
 	
-	private bool enoughMats (int invAmount, int neededAmount) {
+	private bool enoughMats (int invAmount, int neededAmount)
+	{
 		if (invAmount < neededAmount)
 			return false;
 		return true;
 	}
 	
-	private void addCraftedToInventory (IBlueprint bp) {
-		string loc = bp.getObjectLocation();
+	private void addCraftedToInventory (IBlueprint bp)
+	{
+		string loc = bp.getObjectLocation ();
 		
-		Debug.Log("Loading crafted item from location " + loc);
-		GameObject crafted = (GameObject) Instantiate((GameObject) Resources.Load(loc));
+		Debug.Log ("Loading crafted item from location " + loc);
+		GameObject crafted = (GameObject)Instantiate ((GameObject)Resources.Load (loc));
 
-		ItemInfo crfItmInf= getItemInfo(crafted);
+		ItemInfo crfItmInf = getItemInfo (crafted);
 		
-		Debug.Log("ItemInfo of Crafted: " + crfItmInf.itemName);
+		Debug.Log ("ItemInfo of Crafted: " + crfItmInf.itemName);
 		
-		if(!inventory.addItem(crfItmInf)) Debug.LogError("Crafted item wasnt added to inventory");
-		crafted.SetActive(false);
+		if (!inventory.addItem (crfItmInf))
+			Debug.LogError ("Crafted item wasnt added to inventory");
+		crafted.SetActive (false);
 	
 	}
 	
-	private ItemInfo getItemInfo(GameObject item) {
-		ItemInfoScript s = (ItemInfoScript)item.GetComponent<ItemInfoScript>();
-		return s.getItemInfo();
+	private ItemInfo getItemInfo (GameObject item)
+	{
+		ItemInfoScript s = (ItemInfoScript)item.GetComponent<ItemInfoScript> ();
+		return s.getItemInfo ();
 	}
+	
+	public List<IBlueprint> getBlueprints ()
+	{
+		return blueprints;
+	}
+	
+
 	
 }

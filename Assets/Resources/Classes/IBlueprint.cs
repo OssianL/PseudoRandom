@@ -7,6 +7,7 @@ public interface IBlueprint {
 
 	string getObjectLocation ();
 	Dictionary<string, int> getMaterials();
+	string getName();
 
 }
 

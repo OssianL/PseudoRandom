@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_2_0;UNITY_4_2;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_2_1;UNITY_4_2;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -37,10 +37,10 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>B:/Program Files/Unity/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>B:/Program Files/Unity/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -105,10 +105,10 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\SizeProfiler.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
-     <Compile Include="Assets\CraftingGUI.cs" />
      <Compile Include="Assets\Resources\Classes\Blueprint.cs" />
      <Compile Include="Assets\Resources\Classes\IBlueprint.cs" />
      <Compile Include="Assets\Resources\Classes\ItemInfo.cs" />
+     <Compile Include="Assets\Resources\Classes\RustyFenceBlueprint.cs" />
      <Compile Include="Assets\Resources\Classes\Slot.cs" />
      <Compile Include="Assets\Resources\Classes\TeslaCoilBlueprint.cs" />
      <Compile Include="Assets\Resources\Classes\TestBlueprint.cs" />
@@ -149,6 +149,7 @@
      <Compile Include="Assets\Resources\Scripts\WorldGen\WorldGenerator.cs" />
      <Compile Include="Assets\Resources\Scripts\player\BuilderController.cs" />
      <Compile Include="Assets\Resources\Scripts\player\Crafting.cs" />
+     <Compile Include="Assets\Resources\Scripts\player\CraftingGUI.cs" />
      <Compile Include="Assets\Resources\Scripts\player\Inventory.cs" />
      <Compile Include="Assets\Resources\Scripts\player\InventoryGUI.cs" />
      <Compile Include="Assets\Resources\Scripts\player\PlayerController.cs" />

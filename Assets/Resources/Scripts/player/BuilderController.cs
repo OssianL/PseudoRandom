@@ -14,11 +14,9 @@ public class BuilderController : MonoBehaviour {
 
 	
 	void Start () {
-<<<<<<< HEAD
+
 		this.groundHeight = roadPartOnGroundLevel.transform.position.y;
-=======
-		//SendMessage("Build", testObject);
->>>>>>> ossian/master
+
 	}
 	
 
@@ -48,7 +46,12 @@ public class BuilderController : MonoBehaviour {
 		position = Utils.Snap (position, unit);
 		position.x += unit / 2;
 		position.z += unit / 2;
-		position.y = groundHeight;
+		if(placableItmInf.gObject.CompareTag("Collectible")){
+			position.y = groundHeight + 0.5f;
+		} else {
+			position.y = groundHeight;
+		}
+
 		building.transform.position = position;
 
 		if (Input.GetButtonDown ("Fire1"))
@@ -78,9 +81,7 @@ public class BuilderController : MonoBehaviour {
 			Tower tower = building.GetComponent<Tower> ();
 			if (tower != null)
 				tower.enabled = true;
-		} else if (placableItmInf.itemName == "MEAT") {
-			building.collider.isTrigger = true;
-		} else if (placableItmInf.itemName == "DUCT TAPE") {
+		} else if (placableItmInf.gObject.CompareTag("Collectible")) {
 			building.collider.isTrigger = true;
 		}
 	
