@@ -3857,6 +3857,7 @@ MonoBehaviour:
   inventory: {fileID: 938262952}
   inventoryWidthDeduction: 1200
   inventoryHeightDeduction: 400
+  padding: 0
   slotStyle:
     m_Name: 
     m_Normal:
@@ -3957,7 +3958,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f2a190169a867458b0cf768031834d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testObject: {fileID: 100000, guid: 6b96a45bc31ffbb418eb024348937e1e, type: 2}
 --- !u!114 &938262954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5172,6 +5172,7 @@ GameObject:
   - 4: {fileID: 1290037269}
   - 114: {fileID: 1290037270}
   - 114: {fileID: 1290037271}
+  - 114: {fileID: 1290037272}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -5219,6 +5220,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d218daa9c87fc2f4284fea1a82c0c5bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1290037272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1290037268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034841c26433c6b41972fb7d6bb4bb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1292719534
